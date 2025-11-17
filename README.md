@@ -51,7 +51,6 @@ python banks_project.py
 ```
 banks-etl-pipeline/
 │
-├── banks_project.py              # Main Python script
 ├── banks_project_colab.ipynb    # Google Colab notebook version
 ├── requirements.txt              # Project dependencies
 ├── README.md                     # Project documentation
@@ -333,9 +332,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👤 Author
 
 **Your Name**
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your Profile](https://linkedin.com/in/yourprofile)
-- Email: your.email@example.com
+- GitHub: [@IreneDeNevi](https://github.com/IreneDeNevi)
+- LinkedIn: [Irene De Nevi](https://www.linkedin.com/in/irene-denevi/)
 
 ---
 
@@ -379,16 +377,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 📞 Support
 
-If you encounter any issues or have questions:
-
-1. Check the [Troubleshooting](#-troubleshooting) section
-2. Search existing [Issues](https://github.com/yourusername/banks-etl-pipeline/issues)
-3. Create a new issue with detailed description
-4. Contact the maintainer
-
----
 
 **⭐ If you find this project useful, please consider giving it a star!**
 
