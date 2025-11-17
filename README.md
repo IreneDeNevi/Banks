@@ -56,38 +56,38 @@ banks-etl-pipeline/
 ├── README.md                     # Project documentation
 │
 ├── output/                       # Generated files (gitignored)
-│   ├── Largest_banks_data.csv   # Transformed data
-│   ├── Banks.db                  # SQLite database
-│   └── code_log.txt              # Execution logs
-│
-└── docs/                         # Additional documentation
-    └── TECHNICAL_GUIDE.md        # Technical implementation details
+   ├── Largest_banks_data.csv   # Transformed data
+   ├── Banks.db                  # SQLite database
+   └── code_log.txt              # Execution logs
+
 ```
 
 ---
 
 ## 🛠️ Technologies Used
 
-| Technology | Purpose |
-|------------|---------|
-| **Python 3.8+** | Core programming language |
-| **Pandas** | Data manipulation and analysis |
-| **NumPy** | Numerical computations |
-| **BeautifulSoup4** | Web scraping and HTML parsing |
-| **Requests** | HTTP requests for data retrieval |
-| **SQLite3** | Lightweight database storage |
-| **Google Colab** | Cloud-based execution environment |
+| Technology               | Purpose                           |
+| ------------------------ | --------------------------------- |
+| **Python 3.8+**    | Core programming language         |
+| **Pandas**         | Data manipulation and analysis    |
+| **NumPy**          | Numerical computations            |
+| **BeautifulSoup4** | Web scraping and HTML parsing     |
+| **Requests**       | HTTP requests for data retrieval  |
+| **SQLite3**        | Lightweight database storage      |
+| **Google Colab**   | Cloud-based execution environment |
 
 ---
 
 ## 📋 ETL Pipeline Workflow
 
 ### 1️⃣ **EXTRACT**
+
 - Fetches data from Wikipedia (archived version for consistency)
 - Parses HTML tables using BeautifulSoup
 - Extracts bank names and market capitalization in USD
 
 ### 2️⃣ **TRANSFORM**
+
 - Retrieves real-time exchange rates from CSV source
 - Converts USD values to:
   - 🇬🇧 British Pound (GBP)
@@ -96,11 +96,13 @@ banks-etl-pipeline/
 - Rounds all values to 2 decimal places
 
 ### 3️⃣ **LOAD**
+
 - Exports transformed data to CSV file
 - Creates SQLite database table
 - Maintains data integrity across formats
 
 ### 4️⃣ **ANALYZE**
+
 - Executes SQL queries for insights
 - Generates summary statistics
 - Provides data validation
@@ -130,13 +132,13 @@ load_to_db(transformed_data, connection, 'banks_table')
 
 ### Extracted & Transformed Data
 
-| Name | MC_USD_Billion | MC_GBP_Billion | MC_EUR_Billion | MC_INR_Billion |
-|------|----------------|----------------|----------------|----------------|
-| JPMorgan Chase | 432.92 | 346.34 | 402.62 | 35,910.71 |
-| Bank of America | 231.52 | 185.22 | 215.31 | 19,204.58 |
-| ICBC China | 194.56 | 155.65 | 181.02 | 16,138.46 |
-| Wells Fargo | 155.87 | 124.72 | 144.96 | 12,936.67 |
-| HSBC Holdings | 148.90 | 119.15 | 138.48 | 12,354.71 |
+| Name            | MC_USD_Billion | MC_GBP_Billion | MC_EUR_Billion | MC_INR_Billion |
+| --------------- | -------------- | -------------- | -------------- | -------------- |
+| JPMorgan Chase  | 432.92         | 346.34         | 402.62         | 35,910.71      |
+| Bank of America | 231.52         | 185.22         | 215.31         | 19,204.58      |
+| ICBC China      | 194.56         | 155.65         | 181.02         | 16,138.46      |
+| Wells Fargo     | 155.87         | 124.72         | 144.96         | 12,936.67      |
+| HSBC Holdings   | 148.90         | 119.15         | 138.48         | 12,354.71      |
 
 ### SQL Query Results
 
@@ -155,9 +157,11 @@ FROM Largest_banks;
 ### Core Functions
 
 #### `log_progress(message)`
+
 Logs ETL pipeline progress with timestamps.
 
 **Parameters:**
+
 - `message` (str): Log entry description
 
 **Output:** Appends to `code_log.txt`
@@ -165,9 +169,11 @@ Logs ETL pipeline progress with timestamps.
 ---
 
 #### `extract(url, table_attribs)`
+
 Extracts bank data from Wikipedia.
 
 **Parameters:**
+
 - `url` (str): Source URL
 - `table_attribs` (list): DataFrame column names
 
@@ -176,9 +182,11 @@ Extracts bank data from Wikipedia.
 ---
 
 #### `transform(df, csv_path)`
+
 Applies currency conversions to dataset.
 
 **Parameters:**
+
 - `df` (pd.DataFrame): Input data
 - `csv_path` (str): Exchange rates CSV URL
 
@@ -187,18 +195,22 @@ Applies currency conversions to dataset.
 ---
 
 #### `load_to_csv(df, output_path)`
+
 Exports data to CSV format.
 
 **Parameters:**
+
 - `df` (pd.DataFrame): Data to export
 - `output_path` (str): Destination file path
 
 ---
 
 #### `load_to_db(df, sql_connection, table_name)`
+
 Loads data into SQLite database.
 
 **Parameters:**
+
 - `df` (pd.DataFrame): Data to load
 - `sql_connection`: SQLite connection object
 - `table_name` (str): Target table name
@@ -206,9 +218,11 @@ Loads data into SQLite database.
 ---
 
 #### `run_query(query, sql_connection)`
+
 Executes SQL queries and displays results.
 
 **Parameters:**
+
 - `query` (str): SQL query string
 - `sql_connection`: SQLite connection object
 
@@ -216,20 +230,21 @@ Executes SQL queries and displays results.
 
 ## 🔧 Configuration Parameters
 
-| Parameter | Value | Description |
-|-----------|-------|-------------|
-| `URL` | Wikipedia Banks List | Data source URL |
-| `EXCHANGE_RATE_CSV` | IBM Cloud Storage | Exchange rates source |
-| `OUTPUT_CSV_PATH` | `./Largest_banks_data.csv` | CSV output location |
-| `DATABASE_NAME` | `Banks.db` | SQLite database name |
-| `TABLE_NAME` | `Largest_banks` | Database table name |
-| `LOG_FILE` | `code_log.txt` | Log file location |
+| Parameter             | Value                        | Description           |
+| --------------------- | ---------------------------- | --------------------- |
+| `URL`               | Wikipedia Banks List         | Data source URL       |
+| `EXCHANGE_RATE_CSV` | IBM Cloud Storage            | Exchange rates source |
+| `OUTPUT_CSV_PATH`   | `./Largest_banks_data.csv` | CSV output location   |
+| `DATABASE_NAME`     | `Banks.db`                 | SQLite database name  |
+| `TABLE_NAME`        | `Largest_banks`            | Database table name   |
+| `LOG_FILE`          | `code_log.txt`             | Log file location     |
 
 ---
 
 ## 📦 Installation
 
 ### Prerequisites
+
 - Python 3.8 or higher
 - pip package manager
 
@@ -240,6 +255,7 @@ pip install -r requirements.txt
 ```
 
 **requirements.txt:**
+
 ```
 requests>=2.31.0
 beautifulsoup4>=4.12.0
@@ -280,21 +296,25 @@ This project demonstrates proficiency in:
 ### Common Issues
 
 **Problem:** `ModuleNotFoundError: No module named 'bs4'`
+
 ```bash
 Solution: pip install beautifulsoup4
 ```
 
 **Problem:** Network timeout during data extraction
+
 ```bash
 Solution: Check internet connection; script will retry automatically
 ```
 
 **Problem:** Database locked error
+
 ```bash
 Solution: Close existing database connections before running script
 ```
 
 **Problem:** Exchange rate CSV not loading
+
 ```bash
 Solution: Verify CSV URL is accessible; check network permissions
 ```
@@ -332,6 +352,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 👤 Author
 
 **Your Name**
+
 - GitHub: [@IreneDeNevi](https://github.com/IreneDeNevi)
 - LinkedIn: [Irene De Nevi](https://www.linkedin.com/in/irene-denevi/)
 
@@ -376,8 +397,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ![GitHub watchers](https://img.shields.io/github/watchers/yourusername/banks-etl-pipeline?style=social)
 
 ---
-
-
 
 **⭐ If you find this project useful, please consider giving it a star!**
 
