@@ -377,18 +377,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-## 🔄 Future Enhancements
-
-- [ ] Add support for more currencies (JPY, CNY, CHF)
-- [ ] Implement data visualization with charts
-- [ ] Add automated email reporting
-- [ ] Create REST API endpoints
-- [ ] Add unit tests and CI/CD pipeline
-- [ ] Implement data validation rules
-- [ ] Add historical data tracking
-- [ ] Create dashboard with real-time updates
-
----
 
 ## 📊 Project Statistics
 
